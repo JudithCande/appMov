@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FirestoreService } from '../services/firestore/firestore.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab2',
@@ -6,7 +8,19 @@ import { Component } from '@angular/core';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
+  title: string = ""
+  description: string = ""
+  
+  constructor(private firestoreService: FirestoreService, public navCtrl: NavController) {}
 
-  constructor() {}
-
+  onSend(){
+    const data = {
+      title: this.title,
+      description: this.description
+    } 
+    this.firestoreService.createPost(data).then(() =>{
+      console.log("Publicacion hecha exitosamente!")
+      this.navCtrl.navigateRoot('/home/tabs/tab3')
+    })
+  }
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ClimaService } from '../services/clima/clima.service';
 
 @Component({
   selector: 'app-tab1',
@@ -6,7 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
+  clima;
+  constructor(private climaService:ClimaService) {}
 
-  constructor() {}
+  ngOnInit(){
+    this.climaService.Temperatura().subscribe(
+      res => {
+        this.clima = res
+        console.log(this.clima)
+      }
+    )
+  }
 
 }

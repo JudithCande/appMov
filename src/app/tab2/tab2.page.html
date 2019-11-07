@@ -1,9 +1,12 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Tab Two
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content></ion-content>
+<ion-content class="ion-padding ion-text-center">
+  <ion-title>Dejanos un comentario</ion-title>
+  <ion-list>
+    <ion-item>
+      <ion-input placeholder="Titulo" [(ngModel)]="title"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-textarea placeholder="Escribenos algo..." [(ngModel)]="description" ></ion-textarea>
+      </ion-item>
+  </ion-list>
+  <ion-button expand="full" color="light" (click)="onSend()">Enviar</ion-button>
+</ion-content>
